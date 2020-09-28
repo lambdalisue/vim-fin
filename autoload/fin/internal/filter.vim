@@ -39,20 +39,21 @@ endfunction
 function! s:consumer(ctx, bufnr) abort
   if getcmdtype() !=# '@' || bufnr('%') isnot# a:bufnr
     return
-  elseif getcmdline() !=# a:ctx.query
+  endif
+  let query = getcmdline()
+  if query !=# a:ctx.query
+    let a:ctx.query = query
     call s:update(a:ctx)
   endif
   call timer_start(g:fin#interval, { -> s:consumer(a:ctx, a:bufnr) })
 endfunction
 
 function! s:update(ctx) abort
-  let query = getcmdline()
-  let ignore = query ==# tolower(query)
-  let a:ctx.query = query
+  let ignore = a:ctx.query ==# tolower(a:ctx.query)
   call fin#internal#context#update(a:ctx, ignore)
   call s:update_statusline(a:ctx)
   call s:update_content(a:ctx)
-  call fin#matcher#{a:ctx.matcher}#highlight(query, ignore)
+  call fin#matcher#{a:ctx.matcher}#highlight(a:ctx.query, ignore)
   call cursor(a:ctx.cursor, 1, 0)
   redraw
 endfunction
