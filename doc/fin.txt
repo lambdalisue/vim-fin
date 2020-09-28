@@ -1,0 +1,98 @@
+*fin.txt*		Filter buffer content in-place without modification
+
+Author:  Alisue <lambdalisue@hashnote.net>
+License: MIT license
+
+=============================================================================
+CONTENTS						*fin-contents*
+
+INTRODUCTION				|fin-introduction|
+USAGE					|fin-usage|
+INTERFACE				|fin-interface|
+  VARIABLE				|fin-variable|
+  MAPPING				|fin-mapping|
+  COMMAND				|fin-command|
+  FUNCTION				|fin-function|
+  HIGHLIGHT				|fin-highlight|
+
+
+=============================================================================
+INTRODUCTION						*fin-introduction*
+
+*fin.vim* (fin) is a plugin to filter buffer content in-place without
+modification. It's written in a pure Vim script.
+
+
+=============================================================================
+USAGE							*fin-usage*
+
+Start filtering the buffer content by |:Fin| command
+>
+	:Fin
+<
+Use the {feedkeys} argument to change the behavior after filtering.
+For example, the following command sequence will 1) Open |quickfix| window, 2)
+Filter quickfix items, 3) Jumps to the selected item, 4) Close quickfix window
+>
+	:botright copen | Fin \<CR> | cclose
+<
+See |:Fin| for more details.
+
+
+=============================================================================
+INTERFACE						*fin-interface*
+
+-----------------------------------------------------------------------------
+VARIABLE						*fin-variable*
+
+TBW
+
+-----------------------------------------------------------------------------
+MAPPING							*fin-mapping*
+
+*<Plug>(fin-line-prev)*		<C-t>
+	Go to the previous line.
+
+*<Plug>(fin-line-next)*		<C-g>
+	Go to the next line.
+
+*<Plug>(fin-matcher-perv)*
+	Switch to the previous matcher.
+
+*<Plug>(fin-matcher-next)*	<C-^>/<C-6>
+	Switch to the next matcher.
+
+-----------------------------------------------------------------------------
+COMMAND							*fin-command*
+
+							*:Fin*
+:Fin [-query={query}] [-matcher={matcher}] [{feedkeys}]
+	Start filtering the buffer content. 
+
+	The {query} is the initial value of the prompt.
+	The {matcher} is the initial matcher name.
+	The {feedkeys} is the keystroke queued for processing as if they come
+	from a mapping or were typed by the user after filtering. It's
+	equivalent to the following command (the difference is the behavior
+	when user canceled the filtering.)
+>
+	:Fin | call feedkeys("{feedkeys}", 'x')
+<
+	Note that the command can be followed by a '|' and another command.
+
+
+-----------------------------------------------------------------------------
+FUNCTION						*fin-function*
+
+							*fin#version()*
+fin#version()
+	Show fin version itself.
+
+-----------------------------------------------------------------------------
+HIGHLIGHT						*fin-highlight*
+
+TBW
+
+
+=============================================================================
+vim:tw=78:fo=tcq2mM:ts=8:ft=help:norl
