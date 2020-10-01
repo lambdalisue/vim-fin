@@ -7,8 +7,3 @@ command! -bar -nargs=*
       \ -complete=customlist,fin#internal#command#fin#complete
       \ Fin
       \ call fin#internal#command#fin#command(<q-mods>, [<f-args>])
-
-command! -bar -nargs=*
-      \ -complete=customlist,fin#internal#command#fin#complete
-      \ FinCR
-      \ Fin \<CR> <args>

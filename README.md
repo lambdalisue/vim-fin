@@ -22,10 +22,10 @@ fin.vim has no extra dependencies so use your favorite Vim plugin manager.
 :Fin
 ```
 
-Or use with `{feedkeys}` like
+Or use with `{after}` like
 
 ```
-:botright copen | Fin \<CR> | cclose
+:botright copen | Fin -after=\<CR> | cclose
 ```
 
 ## License

@@ -8,7 +8,6 @@ call s:Config.config(expand('<sfile>:p'), {
       \ 'wrap_around': 1,
       \ 'matcher': 'all',
       \ 'matchers': ['all', 'fuzzy'],
-      \ 'feedkeys': 'zvzz',
       \})
 
 function! fin#version() abort
