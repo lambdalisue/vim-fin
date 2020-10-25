@@ -66,7 +66,7 @@ MAPPING							*fin-mapping*
 COMMAND							*fin-command*
 
 							*:Fin*
-:Fin [-after={after}] [-cancel={cancel}] [-matcher={matcher}] [{query}]
+:Fin [-after|-After={after}] [-cancel|-Cancel={cancel}] [-matcher={matcher}] [{query}]
 	Start filtering the buffer content. 
 
 	The {query} is the initial value of the prompt.
